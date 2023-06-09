@@ -41,7 +41,6 @@ const Home = () => {
               </ListGroup.Item>
             ))}
           </ListGroup>
-          Filtrados
         </Col>{" "}
         {/* xs: breack point para dispositivos extrapequenos predifinidos, sm: pequenos, md: mdeianos, lg: grandes, xlg: extra grandes */}
         <Col md={8} lg={9} className='productos'>
@@ -65,12 +64,12 @@ const Home = () => {
           <Row xs={1} md={2} lg={3}>
             {productList.map((product) => (
               <Col className="mb-3" key={product.id}>
-                <Card className="w-100">
-                  <Link to={`/product/${product.id}`}>
+                <Link to={`/product/${product.id}`}>
+                  <Card className="w-100">
                     <Card.Img
                       variant="top"
                       src={product.images?.[0].url}
-                      style={{ height: 200, objectFit: "cover"}}
+                      style={{ height: 100, objectFit: "cover", img:"fluid"}}
                     />
                     <Card.Body>
                       <section>
@@ -81,10 +80,10 @@ const Home = () => {
                           {product.price}
                         </Card.Text>
                       </section>
-                      <Button variant="primary">Product Detail</Button>
+                      <Button variant="success">Product Detail</Button>
                     </Card.Body>
-                  </Link>
-                </Card>
+                  </Card>
+                </Link>
               </Col>
             ))}
           </Row>

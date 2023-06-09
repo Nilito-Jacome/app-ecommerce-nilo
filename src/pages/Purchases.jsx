@@ -25,35 +25,41 @@ useEffect(() => {
 
     return (
         <div>
-            <h1>Shopping list</h1>
+            <h1 className="titu">Shopping list</h1>
             <ListGroup>
             </ListGroup>
                 {
                     purchases.map(item =>(
                         <ListGroup.Item key={item.id}>
-                            <Row className="b-1px soli black">
-                                <Col md={2}>
-                                    {item.product.title}
-                                </Col>
-                                <Col md={2}>
-                                    <img src={item.product.images?.[0].url} alt="" style={{width:80}} className="m-3 img-fluid"/>
-                                </Col>
-                                <Col md={2}>
-                                    Quantity
-                                    {item.quantity}
-                                </Col>
-                                <Col md={2}>
-                                    Unit price
-                                {item.product.price}
-                                </Col>
-                                <Col md={2}>
-                                Total price
-                                {item.product.price * item.quantity}
-                                </Col>
-                                <Col md={2}>
-                                    {item.createdAt}
-                                </Col>
-                            </Row>                            
+                            <div className="shoping">
+                                <Row className="pt-1 ms-1 me-5">
+                                    <Col xs={2}>
+                                        {item.product.title}
+                                    </Col>
+                                    <Col xs={2}>
+                                        <img src={item.product.images?.[0].url} alt="" style={{width:100}} className="m-3 img-fluid"/>
+                                    </Col>
+                                    <Col xs={2}>
+                                        <span>Quantity</span>
+                                        <br />
+                                        {item.quantity}
+                                    </Col>
+                                    <Col xs={2}>
+                                        <span>Unit price</span>
+                                        <br />
+                                    {item.product.price}
+                                    </Col>
+                                    <Col xs={2}>
+                                        <span>Total price</span>
+                                    <br />
+                                    {item.product.price * item.quantity}
+                                    </Col>
+                                    <Col xs={2}>
+                                        <span>Fecha</span>
+                                        {item.createdAt}
+                                    </Col>
+                                </Row>                            
+                            </div>
                         </ListGroup.Item>
                     ))
                 }

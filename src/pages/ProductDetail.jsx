@@ -72,7 +72,7 @@ const ProductDetail = () => {
             <Carousel activeIndex={index} onSelect={handleSelect}>
               <Carousel.Item>
                 <img
-                  className="d-block w-100 img-fluid"
+                  className="d-block w-100"
                   src={productDetail.images?.[0].url}
                   alt="First slide"
                 />
@@ -81,7 +81,7 @@ const ProductDetail = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100 img-fluid"
+                  className="d-block w-100"
                   src={productDetail.images?.[1].url}
                   alt="Second slide"
                 />
@@ -90,7 +90,7 @@ const ProductDetail = () => {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100 img-fluid"
+                  className="d-block w-100"
                   src={productDetail.images?.[2].url}
                   alt="Third slide"
                 />
@@ -145,8 +145,8 @@ const ProductDetail = () => {
                     {
                         productFiltered.map((product) => (
                             <Col className="mb-3" key={product.id}>
-                                <Card className="w-100">
-                                    <Link to={`/product/${product.id}`}>
+                                <Link to={`/product/${product.id}`}>
+                                  <Card className="w-100">
                                     <Card.Img
                                         variant="top"
                                         src={product.images?.[0].url}
@@ -161,8 +161,8 @@ const ProductDetail = () => {
                                         Cart
                                         </Button>{" "}
                                     </Card.Body>
-                                    </Link>
-                                </Card>
+                                  </Card>
+                                </Link>
                             </Col>
                         
                         ))
