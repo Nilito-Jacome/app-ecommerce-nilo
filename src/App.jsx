@@ -8,10 +8,12 @@ import ProductDetail from './pages/ProductDetail'
 import Loader from './components/Loader'
 import { useSelector } from "react-redux";
 import Container from 'react-bootstrap/Container';
+import ProtectedRoutes from './components/ProtectedRoutes'
+import React from 'react'
 
-function App() {
+const App = () => {
   
-  const isLoading = useSelector((state) => state.isLoading);
+  const isLoading = useSelector((state) => state.isLoading)
 
   return (
     <HashRouter>
@@ -33,12 +35,16 @@ function App() {
           <Route 
             element = { <ProductDetail />}
             path = "/product/:id"
-            />
-          {/* ruta protegida*/}
-          <Route 
-            element = { <Purchases />}
-            path = "/purchases"
-            />
+            />          
+          <Route
+          element = { <ProtectedRoutes />}
+          >
+            {/* ruta protegida*/}
+            <Route 
+              element = { <Purchases />}
+              path = "/purchases"
+              />
+          </Route>            
         </Routes>
       </Container>
     </HashRouter>

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { setIsLoading } from './isLoading.slice';
 import axios from 'axios';
-import { set } from 'react-hook-form';
+
 
 export const productSlice = createSlice({
     name: 'product',

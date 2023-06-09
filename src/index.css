@@ -10,3 +10,13 @@
     align-items: center;
     z-index: 99;
 }
+
+.Card.Img{
+    height: 100%;
+}
+
+.Card.Body{
+    display: flex;
+    flex-direction:column ;
+    justify-content: space-between;
+}
