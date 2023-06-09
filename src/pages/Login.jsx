@@ -15,7 +15,7 @@ const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const submit = data => {
+    const sigin = data => {
         dispatch(setIsLoading(true))
 
         axios
@@ -32,15 +32,23 @@ const Login = () => {
         .finally( () => dispatch(setIsLoading(false)))
     }
 
+    const logout = data => {
+      
+      localStorage.setItem("token", "")
+              alert("Usted a salido del sistema")             
+        
+  }
+
+
     return (
       <div className='py-5 my-5 d-flex justify-content-center aligne-center'>
-        <form onSubmit={ handleSubmit(submit)} className='p-3' style={{border: "1px solid white"}}>
+        <form onSubmit={ handleSubmit(sigin)} className='p-3' style={{border: "1px solid white"}}>
             <h1>Log in</h1>
           <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-            <Form.Label column sm={2}>
+            <Form.Label column sm={2} className='me-3'>
               Email
             </Form.Label>
-            <Col sm={10}>
+            <Col sm={9}>
               <Form.Control 
               type="email" 
               placeholder="Email" 
@@ -49,15 +57,11 @@ const Login = () => {
             </Col>
           </Form.Group>
 
-          <Form.Group
-            as={Row}
-            className="mb-3"
-            controlId="formHorizontalPassword"
-          >
-            <Form.Label column sm={2}>
+          <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+            <Form.Label column sm={2} className='me-3'>
               Password
             </Form.Label>
-            <Col sm={10}>
+            <Col sm={9}>
               <Form.Control 
               type="password" 
               placeholder="Password"
@@ -67,10 +71,13 @@ const Login = () => {
           </Form.Group>                   
 
           <Form.Group as={Row} className="mb-3">
-            <Col sm={{ span: 10, offset: 2 }}>
-              <Button type="submit" variant='success'>Sign in</Button>
+            <Col className='ms-4 me-0'>
+              <Button type="submit" onClick={() => sigin()} variant='success'>Sign in</Button>
             </Col>
-          </Form.Group>
+            <Col className='ms-5 me-0'>
+              <Button type="submit" onClick={() => logout()} variant='info'>Log out</Button>
+            </Col>
+          </Form.Group>          
         </form>
       </div>
     );

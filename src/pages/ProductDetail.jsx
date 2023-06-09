@@ -12,6 +12,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom'
 import { addToCartThunk } from "../store/slices/cart.slice";
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 const ProductDetail = () => {
 
@@ -21,6 +22,7 @@ const ProductDetail = () => {
     const dispatch = useDispatch()
     const allProduct = useSelector(state => state.product)
     const productFiltered = allProduct.filter( product => product.id !== parseInt(id))   
+    const navigate = useNavigate()
 
     {/* el filter nos ayuda hacer un filtro para discriminar el producto que se busco y no se encuentre en los productos relacionados, parsein nos ayuda a que la comparacion del  product.id con el otro id se lo pueda hacer por que ya esta convertido en un numero */}
 
@@ -60,7 +62,13 @@ const ProductDetail = () => {
         quantity : rate,
         productId: productDetail.id
       }
-      dispatch(addToCartThunk(cart))
+
+      const tokenValue = localStorage.getItem("token")
+      if(tokenValue){
+        dispatch(addToCartThunk(cart))
+      }else{
+        navigate ("/login")
+      }
     }
 
     return (

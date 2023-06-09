@@ -31,16 +31,18 @@ const Home = () => {
     <div>
       <Row className="pt-5">
         <Col md={4} lg={3}>
-          <ListGroup className="w-100">
-            {categorys.map((category) => (
-              <ListGroup.Item
-                key={category.id}
-                onClick={() => dispatch(filterCategoryThunk(category.id))}
-              >
-                {category.name}
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
+          <div className='filtrado'>
+            <ListGroup className="w-100">
+              {categorys.map((category) => (                
+                <ListGroup.Item
+                  key={category.id}
+                  onClick={() => dispatch(filterCategoryThunk(category.id))}
+                >
+                  {category.name}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          </div>
         </Col>{" "}
         {/* xs: breack point para dispositivos extrapequenos predifinidos, sm: pequenos, md: mdeianos, lg: grandes, xlg: extra grandes */}
         <Col md={8} lg={9} className='productos'>

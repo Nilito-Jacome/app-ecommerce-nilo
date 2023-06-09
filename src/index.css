@@ -67,3 +67,6 @@ span{
 .carousel-inner{
     height: 10%;
 }
+.filtrado{
+     cursor:pointer;
+}
